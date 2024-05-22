@@ -1,0 +1,13 @@
+.container {
+    padding-top: 19px;
+    width: 130px;
+    height: 130px;
+    border: 1px solid #42165D;
+    border-radius: 5px;
+    transition: all 0.1s;
+
+    .image {
+        width: 92px;
+        height: 92px;
+    }
+}
