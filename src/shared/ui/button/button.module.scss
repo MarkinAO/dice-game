@@ -1,0 +1,59 @@
+.button {
+  padding: 10px 16px;
+  height: 44px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 16px;
+  font-family: var(--font-family);
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  .options {
+    margin-left: 10px;
+    width: 27px;
+    height: 22px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 4px;
+    opacity: 0.1;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+}
+
+.default {
+  border-bottom: 1px solid #9159be;
+  background: #643f82;
+}
+
+.default:hover {
+  border-bottom: 1px solid #ab69e2;
+  background: #8151a8;
+}
+
+.active {
+  border-bottom: 1px solid #d77400;
+  background: #f6a200;
+  .options {
+    opacity: 1;
+  }
+}
+
+.bet {
+  border-bottom: 1px solid #55f30a;
+  background: #37ac00;
+}
+
+.bet:hover {
+  border-bottom: 1px solid #7dff3f;
+  background: #41ca00;
+}
+
+.disablet {
+  border-bottom: 1px solid #55f30a;
+  background: #37ac00;
+  opacity: 0.3;
+}
