@@ -1,0 +1,20 @@
+.wrap {
+  position: absolute;
+  top: 0;
+  width: 100%;  
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 24px;
+    width: 100%;
+    font-weight: 700;
+    font-size: 16px;
+
+    .buttons {
+      display: flex;
+      gap: 8px;
+    }
+  }
+}

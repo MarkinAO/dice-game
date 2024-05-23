@@ -32,5 +32,6 @@ select:focus {
 
 body {
   font-family: var(--font-family);
-  background-color: #000000;
+  color: #ffffff;
+  background: linear-gradient(270deg, #0c0b1e 0%, #2a0f3b 52.08%, #0c0b1e 100%);
 }
