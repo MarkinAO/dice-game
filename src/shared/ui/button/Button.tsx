@@ -28,7 +28,7 @@ export default function Button({
   };
   return (
     <button
-      className={`${style.button} ${!disablet ? style[type] : style.disablet}`}
+      className={`${style.button} ${!disablet ? style[type] : style.disablet} ${isSelect && style.isSelect}`}
       onClick={(e) => {
         onClick(e);
       }}
@@ -37,7 +37,9 @@ export default function Button({
       {isSelect && (
         <select value={diceValue} onChange={onChange} className={style.options}>
           {diceValues.map((value) => (
-            <option value={value} key={value}>{value}</option>
+            <option value={value} key={value}>
+              {value}
+            </option>
           ))}
         </select>
       )}
