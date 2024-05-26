@@ -1,10 +1,12 @@
 import style from "./statePanel.module.scss";
+import { useStore } from "@app/store";
 
 export default function StatePanel() {
+  const {auth, statePanel} = useStore((state) => state);
   return (
     <>
-      <div className={style.block}></div>
-      <div className={style.state}>Войдите, чтобы продолжить</div>
+      {!auth && <div className={style.block}></div>}
+      <div className={style.state}>{statePanel}</div>
     </>
   );
 }
