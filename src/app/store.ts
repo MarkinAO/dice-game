@@ -2,9 +2,9 @@ import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
 type StatePanel = {
-  title: string
-  text: string
-}
+  title: string;
+  text: string;
+};
 
 interface IStore {
   popup: boolean;
@@ -17,16 +17,16 @@ interface IStore {
   isPlay: boolean;
   moneyBet: number;
   winValue: number;
-  togglePopup: Function;
-  setBet: Function;
-  setAuth: Function;
-  setScore: Function;
-  setError: Function;
-  setStatePanel: Function;
-  setSelect: Function;
-  setIsPlay: Function;
-  setWinValue: Function;
-  setMoneyBet: Function;
+  togglePopup: () => void;
+  setBet: (newBet: number[]) => void;
+  setAuth: (newAuth: boolean) => void;
+  setScore: (value: number) => void;
+  setError: (isErr: boolean) => void;
+  setStatePanel: ({ title, text }: StatePanel) => void;
+  setSelect: (text: string) => void;
+  setIsPlay: (value: boolean) => void;
+  setWinValue: (value: number) => void;
+  setMoneyBet: (bet: number) => void;
 }
 
 export const useStore = create<IStore>()(
@@ -45,15 +45,16 @@ export const useStore = create<IStore>()(
     winValue: 1,
     moneyBet: 1,
     togglePopup: () => set((state) => ({ popup: !state.popup })),
-    setBet: (newBet: number[]) => set((state) => ({ bet: newBet })),
-    setAuth: (newAuth: boolean) => set((state) => ({ auth: newAuth })),
+    setBet: (newBet: number[]) => set(() => ({ bet: newBet })),
+    setAuth: (newAuth: boolean) => set(() => ({ auth: newAuth })),
     setScore: (value: number) =>
       set((state) => ({ score: state.score + value })),
-    setError: (isErr: boolean) => set((state) => ({ error: isErr })),
-    setStatePanel: ({title, text}: StatePanel) => set((state) => ({ statePanel: {title, text} })),
-    setSelect: (text: string) => set((state) => ({ select: text })),
-    setIsPlay: (value: boolean) => set((state) => ({ isPlay: value })),
-    setWinValue: (value: number) => set((state) => ({ winValue: value })),
-    setMoneyBet: (bet: number) => set((state) => ({ moneyBet: bet })),
+    setError: (isErr: boolean) => set(() => ({ error: isErr })),
+    setStatePanel: ({ title, text }: StatePanel) =>
+      set(() => ({ statePanel: { title, text } })),
+    setSelect: (text: string) => set(() => ({ select: text })),
+    setIsPlay: (value: boolean) => set(() => ({ isPlay: value })),
+    setWinValue: (value: number) => set(() => ({ winValue: value })),
+    setMoneyBet: (bet: number) => set(() => ({ moneyBet: bet })),
   }))
 );
