@@ -1,5 +1,5 @@
 # Dice game
-[Ссылка на игру](https://dice-game-0m9w.onrender.com)
+[Ссылка на игру](https://dice-game-lztg.onrender.com/)
 
 ## Запуск из IDE:
 ``
