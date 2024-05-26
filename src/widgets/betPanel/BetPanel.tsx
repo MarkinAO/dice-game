@@ -1,4 +1,4 @@
-import style from "./betPanel.module.scss";
+import style from "./style.module.scss";
 import Button from "@shared/ui/button/Button";
 import { useStore } from "@app/store";
 

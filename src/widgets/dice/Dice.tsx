@@ -1,4 +1,4 @@
-import style from "./dice.module.scss";
+import style from "./style.module.scss";
 
 interface IDice {
   skin: string;

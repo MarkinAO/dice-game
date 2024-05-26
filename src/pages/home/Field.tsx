@@ -1,8 +1,8 @@
-import style from "./field.module.scss";
+import style from "./style.module.scss";
 import BetPanel from "@widgets/betPanel/BetPanel";
 import RollDice from "@features/rollDice/RollDice";
 import Authorization from "@widgets/authorization/Authorization";
-import TopPanel from "@widgets/Header/Header";
+import TopPanel from "@widgets/header/Header";
 import StatePanel from "@widgets/statePanel/StatePanel";
 
 export default function Field() {

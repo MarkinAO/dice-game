@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react";
-import style from "./button.module.scss";
-import { diceValues } from "../../consts/consts";
-import { useStore } from "../../../app/store";
+import style from "./style.module.scss";
+import { diceValues } from "@shared/consts/consts";
+import { useStore } from "@app/store";
 
 interface IButton {
   text: string;

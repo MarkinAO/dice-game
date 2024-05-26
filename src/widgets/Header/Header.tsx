@@ -1,6 +1,6 @@
-import style from "./header.module.scss";
-import Button from "../../shared/ui/button/Button";
-import { useStore } from "../../app/store";
+import style from "./style.module.scss";
+import Button from "@shared/ui/button/Button";
+import { useStore } from "@app/store";
 
 export default function Header() {
   const { togglePopup, auth, score } = useStore((state) => state);

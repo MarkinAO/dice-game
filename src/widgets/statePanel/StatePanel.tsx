@@ -1,4 +1,4 @@
-import style from "./statePanel.module.scss";
+import style from "./style.module.scss";
 import { useStore } from "@app/store";
 
 export default function StatePanel() {
