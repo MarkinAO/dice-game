@@ -3,13 +3,14 @@ import style from "./style.module.scss";
 import arrowDown from "./assets/arrowDown.svg";
 import arrowUp from "./assets/arrowUp.svg";
 import { betValues } from "@shared/consts/consts";
+import { useStore } from "@app/store";
 
 export default function Select() {
-  const [betValue, setBetValue] = useState("1.00");
   const [arrow, setArrow] = useState(true);
+  const { moneyBet, setMoneyBet } = useStore((state) => state);
   const onClick = (e: any) => {
     if (e.target) {
-      setBetValue(e.target.textContent);
+      setMoneyBet(Number(e.target.textContent));
     }
   };
   return (
@@ -18,13 +19,13 @@ export default function Select() {
         className={`${style.select} ${!arrow && style.active}`}
         onClick={() => setArrow(!arrow)}
       >
-        {betValue}
+        {`${moneyBet}.00`}
         <img src={arrow ? arrowDown : arrowUp} alt="" />
       </div>
       {!arrow && (
         <div className={style.options}>
           {betValues
-            .filter((bet) => bet !== betValue)
+            .filter((bet) => bet !== `${moneyBet}.00`)
             .map((bet: string) => (
               <div
                 className={style.option}

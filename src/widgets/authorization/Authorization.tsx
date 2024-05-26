@@ -19,7 +19,7 @@ export default function Authorization() {
         connectSid,
         handler: () => {
           setAuth(isAuth);
-          setStatePanel("Сделайте ставку");
+          setStatePanel({ title: "Сделайте ставку", text: "" });
         },
       });
     }
@@ -38,14 +38,14 @@ export default function Authorization() {
             ) {
               if (login === "demo" && password === "demo") {
                 setAuth(true);
-                setStatePanel("Сделайте ставку");
+                setStatePanel({ title: "Сделайте ставку", text: "" });
               } else {
                 loginAPI({
                   login,
                   password,
                   handler: () => {
                     setAuth(isAuth);
-                    setStatePanel("Сделайте ставку");
+                    setStatePanel({ title: "Сделайте ставку", text: "" });
                   },
                 });
               }
@@ -55,7 +55,7 @@ export default function Authorization() {
           }}
         >
           <div className={style.container}>
-            <div className={style.cross} onClick={togglePopup}></div>
+            <div className={style.cross} onClick={() => togglePopup()}></div>
             <div className={style.col}>
               <input
                 className={`${style.input} ${error && style.inputError}`}

@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
 import style from "./style.module.scss";
 import { diceValues } from "@shared/consts/consts";
 import { useStore } from "@app/store";
@@ -18,33 +18,29 @@ export default function Button({
   type = "default",
   isSelect = false,
   disablet = false,
-  isActive = true,
+  isActive = false,
 }: IButton) {
-  const [diceValue, setDiceValue] = useState("1");
-  const setBet = useStore((state) => state.setBet);
+  const {setBet, select, setSelect} = useStore((state) => state);
+  
   const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setDiceValue(e.target.value);
+    setSelect(e.target.value);
     setBet([Number(e.target.value)]);
   };
-  const onClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    const button = e.target as HTMLButtonElement;
-    if (isActive && !disablet && type === "default") {
-      button.classList.toggle(style.active);
-    }
+  const onClick = () => {
     handler && handler();
   };
   return (
     <button
       className={`${style.button} ${!disablet ? style[type] : style.disablet} ${
         isSelect && style.isSelect
-      }`}
-      onClick={(e) => {
-        onClick(e);
+      } ${isActive && style.active}`}
+      onClick={() => {
+        onClick();
       }}
     >
       {text}
       {isSelect && (
-        <select value={diceValue} onChange={onChange} className={style.options}>
+        <select value={select} onChange={onChange} className={style.options}>
           {diceValues.map((value) => (
             <option value={value} key={value}>
               {value}
