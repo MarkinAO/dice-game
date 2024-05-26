@@ -18,7 +18,7 @@ export default function BetPanel() {
   } = useStore((state) => state);
   const [hidden, setHidden] = useState(true);
   const onClick = () => {
-    if (score > 0 && score > moneyBet) {
+    if (score > 0 && score >= moneyBet) {
       setIsPlay(true);
       const random = Math.round(Math.random() * 5) + 1;
       setWinValue(random);
