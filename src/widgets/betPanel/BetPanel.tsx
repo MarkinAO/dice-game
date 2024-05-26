@@ -1,11 +1,17 @@
 import style from "./style.module.scss";
 import Button from "@shared/ui/button/Button";
+import Select from "@shared/ui/select/Select";
 import { useStore } from "@app/store";
 
 export default function BetPanel() {
   const { setBet } = useStore((state) => state);
   return (
     <div className={style.container}>
+      <div className={style.row}>Размер ставки</div>
+      <div className={style.row}>
+        <Select />
+      </div>
+      <div className={`${style.row} ${style.block}`}>Варианты ставок</div>
       <div className={style.row}>
         <Button
           text={"Четное"}
@@ -43,7 +49,7 @@ export default function BetPanel() {
           isSelect={true}
         />
       </div>
-      <div className={style.row}>
+      <div className={`${style.row} ${style.block}`}>
         <Button text={"Сделать ставку"} handler={() => {}} type="bet" />
       </div>
     </div>

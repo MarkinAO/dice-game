@@ -1,11 +1,15 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
 
-    .row {
-        display: flex;
-        gap: 8px;
-    }
+  .row {
+    display: flex;
+    gap: 8px;
+  }
+
+  .block {
+    margin-top: 8px;
+  }
 }
