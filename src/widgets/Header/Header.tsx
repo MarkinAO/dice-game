@@ -17,10 +17,10 @@ export default function Header() {
               }}
               isActive={false}
             />
-            <Button text="Регистрация" handler={() => {}} isActive={false} />
+            <Button text="Регистрация" isActive={false} />
           </div>
         ) : (
-          <div>{score} (TND)</div>
+          <div className={style.text}>{score} (TND)</div>
         )}
       </div>
     </div>
