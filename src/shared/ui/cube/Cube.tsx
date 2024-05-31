@@ -5,7 +5,7 @@ import { DICE_IMAGES } from "@shared/consts";
 
 export function Cube() {
     const mesh = useRef<Mesh>(null)
-    useFrame((state, delta) => {
+    useFrame((_state, delta) => {
       if(mesh.current) {
         mesh.current.rotation.x += delta * 10
         mesh.current.rotation.y += delta * 2
