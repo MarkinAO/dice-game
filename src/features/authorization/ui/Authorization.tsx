@@ -6,8 +6,8 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { meAPI } from "@shared/api/authApi";
 
 export function Authorization() {
-  const [login, setLogin] = useState("test_player_try");
-  const [password, setPassword] = useState("test_player_try");
+  const [login, setLogin] = useState("demo");
+  const [password, setPassword] = useState("demo");
   const { popup, togglePopup, error, setError, setAuth, auth, setStatePanel } =
     useStore((state) => state);
   useEffect(() => {

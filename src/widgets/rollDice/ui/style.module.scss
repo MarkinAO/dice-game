@@ -3,22 +3,4 @@
   height: 131px;
   border: 1px solid #42165d;
   border-radius: 50%;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-  animation-name: roll;
-}
-
-@keyframes roll {
-  0% {
-    box-shadow: none;
-  }
-
-  50% {
-    box-shadow: 0 0 40px 30px #8151a8, 0 0 35px 20px #8151a8 inset;
-    border: 1px solid #8151a8;
-  }
-
-  100% {
-    box-shadow: none;
-  }
 }

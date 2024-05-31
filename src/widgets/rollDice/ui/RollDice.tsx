@@ -1,24 +1,17 @@
-import { Dice } from "@shared/ui/dice";
-import { DICE_IMAGES } from "@shared/consts";
-import { useEffect, useState } from "react";
-import style from "./style.module.scss";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import { Cube } from "@shared/ui/cube";
 
-export function RollDice() {
-  const [skin, setSkin] = useState(DICE_IMAGES[0]);
-  const roll = () => {
-    const random = Math.round(Math.random() * 5);
-    setSkin(DICE_IMAGES[random]);
-    setTimeout(() => {
-      roll();
-    }, 300);
-  };
-
-  useEffect(() => {
-    roll();
-  }, []);
+export function RollDice() { 
   return (
-    <div className={style.container}>
-      <Dice skin={skin} />
-    </div>
+    <>
+      <Canvas style={{height: "130px"}}>
+        <OrbitControls enableZoom={false} enablePan={false} />
+        <ambientLight intensity={10} />
+        <directionalLight position={[2, 1, 1]}/>
+        <Cube />
+      </Canvas>
+    </>
   );
 }
+
