@@ -1,54 +1,38 @@
 import style from "./style.module.scss";
-import Button from "@shared/ui/button/Button";
-import Select from "@shared/ui/select/Select";
-import { useStore } from "@app/store";
+import { Button } from "@features/smartButton";
+import { Select } from "@shared/ui/select";
+import { useStore } from "@shared/model";
 import { useState } from "react";
+import { processingDiceResult } from "@features/processingDiceResult";
 
-export default function BetPanel() {
+export function BetPanel() {
   const {
     setBet,
     bet,
     select,
+    score,
+    moneyBet,
     setIsPlay,
     setWinValue,
-    score,
     setScore,
-    moneyBet,
     setStatePanel,
   } = useStore((state) => state);
   const [hidden, setHidden] = useState(true);
   const onClick = () => {
     if (score > 0 && score >= moneyBet) {
-      setIsPlay(true);
-      const random = Math.round(Math.random() * 5) + 1;
-      setWinValue(random);
-      setTimeout(() => {
-        setIsPlay(false);
-        if (bet.length === 1 && random === bet[0]) {
-          setScore(moneyBet * 3);
-          setStatePanel({
-            title: `Результат броска кубика: ${random}`,
-            text: `Вы выиграли ${moneyBet * 3} TND!`,
-          });
-        } else if (bet.length > 1 && bet.includes(random)) {
-          setScore(moneyBet * 2);
-          setStatePanel({
-            title: `Результат броска кубика: ${random}`,
-            text: `Вы выиграли ${moneyBet * 2} TND!`,
-          });
-        } else {
-          setScore(-moneyBet);
-          setStatePanel({
-            title: `Результат броска кубика: ${random}`,
-            text: `Повезет в следующий раз!`,
-          });
-        }
-      }, 2000);
+      processingDiceResult({
+        bet,
+        setIsPlay,
+        setWinValue,
+        setScore,
+        moneyBet,
+        setStatePanel,
+      });
     } else {
-      setHidden(false)
+      setHidden(false);
       setTimeout(() => {
-        setHidden(true)
-      }, 2000)
+        setHidden(true);
+      }, 2000);
     }
   };
   return (
@@ -110,7 +94,7 @@ export default function BetPanel() {
           }}
           type="bet"
           disablet={bet[0] === 0 ? true : false}
-        />        
+        />
       </div>
       {!hidden && <div className={style.error}>Недостаточно средств</div>}
     </div>

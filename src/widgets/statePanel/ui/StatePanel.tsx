@@ -1,8 +1,9 @@
 import style from "./style.module.scss";
-import { useStore } from "@app/store";
+import { useStore } from "@shared/model";
 
-export default function StatePanel() {
+export function StatePanel() {
   const { auth, statePanel } = useStore((state) => state);
+  
   return (
     <>
       {!auth && <div className={style.block}></div>}

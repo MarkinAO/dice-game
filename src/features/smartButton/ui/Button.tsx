@@ -1,7 +1,6 @@
 import { ChangeEvent } from "react";
 import style from "./style.module.scss";
-import { diceValues } from "@shared/consts/consts";
-import { useStore } from "@app/store";
+import { useStore } from "@shared/model";
 
 interface IButton {
   text: string;
@@ -12,7 +11,9 @@ interface IButton {
   isActive?: boolean;
 }
 
-export default function Button({
+const DICE_VALUES = ["1", "2", "3", "4", "5", "6"];
+
+export function Button({
   text,
   handler,
   type = "default",
@@ -20,8 +21,8 @@ export default function Button({
   disablet = false,
   isActive = false,
 }: IButton) {
-  const {setBet, select, setSelect} = useStore((state) => state);
-  
+  const { setBet, select, setSelect } = useStore((state) => state);
+
   const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelect(e.target.value);
     setBet([Number(e.target.value)]);
@@ -41,7 +42,7 @@ export default function Button({
       {text}
       {isSelect && (
         <select value={select} onChange={onChange} className={style.options}>
-          {diceValues.map((value) => (
+          {DICE_VALUES.map((value) => (
             <option value={value} key={value}>
               {value}
             </option>

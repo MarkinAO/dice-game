@@ -1,13 +1,13 @@
-import Dice from "@widgets/dice/Dice";
-import { diceImages } from "@shared/consts/consts";
+import { Dice } from "@shared/ui/dice";
+import { DICE_IMAGES } from "@shared/consts";
 import { useEffect, useState } from "react";
 import style from "./style.module.scss";
 
-export default function RollDice() {
-  const [skin, setSkin] = useState(diceImages[0]);
+export function RollDice() {
+  const [skin, setSkin] = useState(DICE_IMAGES[0]);
   const roll = () => {
     const random = Math.round(Math.random() * 5);
-    setSkin(diceImages[random]);
+    setSkin(DICE_IMAGES[random]);
     setTimeout(() => {
       roll();
     }, 300);
@@ -20,5 +20,5 @@ export default function RollDice() {
     <div className={style.container}>
       <Dice skin={skin} />
     </div>
-  )
+  );
 }

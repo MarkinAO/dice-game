@@ -33,17 +33,18 @@ export const loginAPI = ({ login, password, handler }: ILogin) => {
 };
 
 interface IMeAPI {
-  connectSid: string;
   handler: Function;
 }
 
-export const meAPI = ({ connectSid, handler }: IMeAPI) => {
+export const meAPI = ({ handler }: IMeAPI) => {
   axios({
     method: "get",
     url: url + "auth/me",
+    withCredentials: true,
     headers: {
       ...headers,
-      Cookie: connectSid,
+      Cookie:
+        "connect.sid=s%3A-Q3Y7krzCl71e0oIaegd-vd98jj6RrGb.jh4hAa%2BoXuzWHt2mii0X%2BXjBul4YoP3F7WNVFFa%2BZjw",
     },
   }).then((res) => {
     if (res.status === 200) {

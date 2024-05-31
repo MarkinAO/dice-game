@@ -2,10 +2,11 @@ import { useState } from "react";
 import style from "./style.module.scss";
 import arrowDown from "./assets/arrowDown.svg";
 import arrowUp from "./assets/arrowUp.svg";
-import { betValues } from "@shared/consts/consts";
-import { useStore } from "@app/store";
+import { useStore } from "@shared/model";
 
-export default function Select() {
+const BET_VALUES = ["1.00", "5.00", "10.00", "15.00", "20.00"];
+
+export function Select() {
   const [arrow, setArrow] = useState(true);
   const { moneyBet, setMoneyBet } = useStore((state) => state);
   const onClick = (e: any) => {
@@ -24,7 +25,7 @@ export default function Select() {
       </div>
       {!arrow && (
         <div className={style.options}>
-          {betValues
+          {BET_VALUES
             .filter((bet) => bet !== `${moneyBet}.00`)
             .map((bet: string) => (
               <div

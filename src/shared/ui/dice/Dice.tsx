@@ -4,7 +4,7 @@ interface IDice {
   skin: string;
 }
 
-export default function Dice({ skin }: IDice) {
+export function Dice({ skin }: IDice) {
   return (
     <div className={style.container}>
       <img src={skin} alt="" className={style.image} />

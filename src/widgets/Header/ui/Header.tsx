@@ -1,9 +1,10 @@
 import style from "./style.module.scss";
-import Button from "@shared/ui/button/Button";
-import { useStore } from "@app/store";
+import { Button } from "@features/smartButton";
+import { useStore } from "@shared/model";
 
-export default function Header() {
+export function Header() {
   const { togglePopup, auth, score } = useStore((state) => state);
+
   return (
     <div className={style.wrap}>
       <div className={style.container}>

@@ -1,8 +1,8 @@
 import "./App.css";
-import Field from "./pages/home/Field";
+import { Home } from "@pages/home/index";
 
 function App() {
-  return <Field />;
+  return <Home />;
 }
 
 export default App;

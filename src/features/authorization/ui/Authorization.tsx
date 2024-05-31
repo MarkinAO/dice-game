@@ -1,28 +1,22 @@
 import style from "./style.module.scss";
-import Button from "@shared/ui/button/Button";
-import { useStore } from "@app/store";
+import { Button } from "@features/smartButton";
+import { useStore } from "@shared/model";
 import { loginAPI } from "@shared/api/authApi";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { meAPI } from "@shared/api/authApi";
-import cookie from "react-cookies";
 
-export default function Authorization() {
-  const [login, setLogin] = useState("demo");
-  const [password, setPassword] = useState("demo");
+export function Authorization() {
+  const [login, setLogin] = useState("test_player_try");
+  const [password, setPassword] = useState("test_player_try");
   const { popup, togglePopup, error, setError, setAuth, auth, setStatePanel } =
     useStore((state) => state);
-  const isAuth = cookie.load("connect.sid") ? true : false;
   useEffect(() => {
-    if (isAuth) {
-      const connectSid = cookie.load("connect.sid");
-      meAPI({
-        connectSid,
-        handler: () => {
-          setAuth(isAuth);
-          setStatePanel({ title: "Сделайте ставку", text: "" });
-        },
-      });
-    }
+    meAPI({
+      handler: () => {
+        setAuth(true);
+        setStatePanel({ title: "Сделайте ставку", text: "" });
+      },
+    });
   }, []);
   return (
     <>
@@ -32,23 +26,23 @@ export default function Authorization() {
           onSubmit={(e: FormEvent<HTMLFormElement>) => {
             e.preventDefault();
             setError(false);
-            if (
+            if (login === "demo" && password === "demo") {
+              setAuth(true);
+              setStatePanel({ title: "Сделайте ставку", text: "" });
+              togglePopup();
+            } else if (
               login.match(/[0-9a-zA-Z!@#$%^&*]{4,}/) &&
               password.match(/[0-9a-zA-Z!@#$%^&*]{4,}/)
             ) {
-              if (login === "demo" && password === "demo") {
-                setAuth(true);
-                setStatePanel({ title: "Сделайте ставку", text: "" });
-              } else {
-                loginAPI({
-                  login,
-                  password,
-                  handler: () => {
-                    setAuth(isAuth);
-                    setStatePanel({ title: "Сделайте ставку", text: "" });
-                  },
-                });
-              }
+              loginAPI({
+                login,
+                password,
+                handler: () => {
+                  setAuth(true);
+                  setStatePanel({ title: "Сделайте ставку", text: "" });
+                  togglePopup();
+                },
+              });
             } else {
               setError(true);
             }
